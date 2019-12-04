@@ -1,9 +1,11 @@
-<h1>Show</h1>
-
-<h3><%= @article.title %></h3>
-<p><%= @article.content %></p>
-<span> <%= @article.status %></span>
-
-<p>
+<%= content_for :title do %>
+  <%= @article.title %>
+<% end %>
+<%= content_for :body do %>
+  <h2><%= @article.title %></h2>
+  <p><%= @article.content %></p>
+  <span> <%= @article.status %></span>
+  <p>
     <%= link_to 'index', articles_path %>
-</p>
+  </p>
+<% end %>
