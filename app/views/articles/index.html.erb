@@ -1,3 +1,13 @@
+<% flash.each do |key, value| %>
+  <div class='alert alert <%= key %>' ><%=value%></div>
+<% end %>
+
 <% @articles.each do |article| %>
-    <h1>  <%= article.title %> </h1>
+    <h3>  <%= article.title %> </h3>
+    <p> <%= article.content.truncate(20) %>
+    <%= link_to 'read more', article_path(article.id) %>
+    </p>
+    <h4>status: <%= article.status %> </h4>
+    <span><%= link_to 'edit', edit_article_path(article.id) %></span>
+    <span><%= link_to 'delete', article_path(article.id), method: "DELETE", data: {confirm: 'Delete this data ? '} %></span>
 <% end %>

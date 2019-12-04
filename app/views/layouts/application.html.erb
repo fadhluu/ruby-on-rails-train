@@ -10,6 +10,7 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class=sidebar><%= yield :sidebar %></div>
+    <div class=main><%= yield %></div>
   </body>
 </html>
