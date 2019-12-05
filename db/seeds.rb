@@ -7,16 +7,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Article.create(
+Comment.create(
   [
-    { title: 'Pencurian', content: 'Lorem ipsum blabla' },
-    { title: 'Pencurian terjadi lagi', content: 'Lorem ipsum bla2x' }
-  ]
-)
-
-Contact.create(
-  [
-    { sosmed: 'Instagram', sosmed_username: '@fadhluu' },
-    { sosmed: 'Facebook', sosmed_username: 'Fadhlu Rahman' }
+    { article_id: 2, user_is: 1, content: 'test123', status: 'aaa' },
+    { article_id: 2, user_is: 1, content: 'wadu2222', status: 'aaa' }
   ]
 )

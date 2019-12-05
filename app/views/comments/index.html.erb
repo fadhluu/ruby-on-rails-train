@@ -1,2 +1,9 @@
-<h1>Comments#index</h1>
-<p>Find me in app/views/comments/index.html.erb</p>
+<%= content_for :body do %>
+  <div class="col-12">
+    <ul class="list-group">
+      <% @comments.each do |c| %>
+        <%= c.content %>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
