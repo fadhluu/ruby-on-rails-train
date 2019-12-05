@@ -1,17 +1,26 @@
 <%= content_for :body do %>
-  <%= form_for @article do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-    <br>
-    <%= f.label :content %>
-    <%= f.text_area :content, cols: 20, rows: 10 %>
-    <br/>
-    <%= f.label :status %>
-    <%= f.radio_button :status, "active" %>
-    <%= label :article_status, 'active' %>
-    <%= f.radio_button :status, "off" %>
-    <%= label :article_status, 'off' %>
-    <br/>
-    <%= f.submit :submit %>
+  <%= form_for @article do |f|%>
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class:'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :content %>
+      <%= f.text_area :content, cols: 20, rows: 10, class:'form-control'%>
+    </div>
+    <div class="form-group">
+      <%= f.label :status %>
+      <div class="form-check form-check-inline-check">
+        <%= f.radio_button :status, "active", class:'form-check-input' %>
+        <%= label :article_status, 'active', class:'form-check-label'%>
+      </div>
+      <div class="form-check form-check-inline">
+        <%= f.radio_button :status, "off", class:'form-check-input'%>
+        <%= label :article_status, 'off', class:'form-check-label' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.submit :submit, class:'btn btn-primary'%>
+    </div>
   <% end %>
 <% end %>

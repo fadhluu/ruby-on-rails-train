@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.status_active
+    @articles = Article.all
   end
 
   def new
@@ -15,7 +17,7 @@ class ArticlesController < ApplicationController
     @article = Article.find_by_id(params[:id])
   end
 
-def update
+  def update
     @article = Article.find_by_id(params[:id])
     if @article.update(params_article)
       flash[:success] = 'Article was_by_find_by_id successfully updated'

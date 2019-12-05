@@ -1,0 +1,14 @@
+<%= content_for :title do %>
+  Contact Us
+<% end %>
+<%= content_for :body do %>
+  <h1 class="h1-responsive font-weight-bold text-center my-4">Contact us</h1>
+  <p class="text-center w-responsive mx-auto mb-5">
+    Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within
+    a matter of hours to help you.</p>
+  <h4 class="h1-responsive font-weight-bold text-center my-4">Our Social Media</h4>
+  <% @contacts.each do |c| %>
+    <%= c.sosmed %>
+    <%= c.sosmed_username %>
+  <% end %>
+<% end %>
