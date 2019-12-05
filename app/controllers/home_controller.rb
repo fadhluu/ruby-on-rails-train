@@ -1,10 +1,11 @@
-class HomeController < ApplicationController
+# frozen_string_literal: true
 
-    def show
-        render template: 'home/index'
-    end
-    
-    def contact
-        render template: 'home/contact'
-    end
+class HomeController < ApplicationController
+  def show
+    render template: 'home/index'
+  end
+
+  def contact
+    render template: 'home/contact'
+  end
 end

@@ -15,17 +15,17 @@ class ArticlesController < ApplicationController
     @article = Article.find_by_id(params[:id])
   end
 
-  def update
+def update
     @article = Article.find_by_id(params[:id])
-      if @article.update(params_article)
-        flash[:success] = "Article was_by_find_by_id successfully updated"
-        redirect_to @article
-      else
-        flash[:error] = "Something went wrong"
-        render 'edit'
-      end
+    if @article.update(params_article)
+      flash[:success] = 'Article was_by_find_by_id successfully updated'
+      redirect_to @article
+    else
+      flash[:error] = 'Something went wrong'
+      render 'edit'
+    end
   end
-  
+
   def create
     @article = Article.new(params_article)
     if @article.save
@@ -47,9 +47,9 @@ class ArticlesController < ApplicationController
       redirect_to articles_url
     end
   end
-  
 
   private
+
   def params_article
     params.require(:article).permit(:title, :content, :status)
   end
