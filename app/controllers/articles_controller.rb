@@ -15,6 +15,12 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find_by_id(params[:id])
+    if !@article.nil?
+      @article
+    else
+      flash[:error] = 'No article found'
+    end
+
     @comment = Comment.new
   end
 

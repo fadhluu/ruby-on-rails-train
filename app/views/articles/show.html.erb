@@ -1,31 +1,53 @@
 <%= content_for :title do %>
-  <%= @article.title %>
+  <% if !@article.nil? %>
+    <%= @article.title %>
+  <% else %>
+    <%= flash[:error] %>
+  <% end %>
 <% end %>
 <%= content_for :body do %>
   <div class="card">
     <div class="card-body">
-      <h1 class='text-center display-3 card-title'><%= @article.title %></h2>
-      <p class="card-text text-center">
-        <%= @article.content %>
-      </p>
+      <% if !@article.nil? %>
+        <h1 class='text-center display-3 card-title'><%= @article.title %></h2>
+        <p class="card-text text-center">
+          <%= @article.content %>
+        </p>
+      <% else %>
+        <h1 class='text-center display-3 card-title'><%= flash[:error] %></h1>
+      <% end %>
     </div>
   </div>
   <div class="row my-4">
     <div class="col-12">
       <ul class="list-group">
-        <% @article.comment.each do |c| %>
-          <li class="list-group-item">
-            <%= c.content %>
-            <%= link_to 'view', article_comment_path(@article.id, c.id) %>
-          </li>
+        <% if !@article.nil? %>
+          <% if @article.comment.any? %>
+            <% @article.comment.each do |c| %>
+              <li class="list-group-item">
+                <%= c.content %>
+                <%= link_to 'view', article_comment_path(@article.id, c.id), class:'badge badge-warning'%>
+              </li>
+            <% end %>
+          <% else %>
+            <li class="list-group-item">
+              This article have no comment
+            </li>
+          <% end %>
         <% end %>
       </ul>
     </div>
   </div>
-  <%= link_to 'Articles List', articles_path, class: 'btn btn-primary'%>
-  <%= form_for [@article, @comment] do |f| %>
-    <%= f.label :Comment, "Comment" %>
-    <%= f.text_field :content, placeholder: 'Comment'%>
-    <%= f.submit "Submit", class: 'btn btn-primary' %>
+  <% if !@article.nil? %>
+    <%= form_for [@article, @comment] do |f| %>
+      <div class="form-group">
+        <%= f.label :Comment, "New Comment" %>
+        <div class="form-inline">
+          <%= f.text_field :content, placeholder: 'Your Comment Goes Here', class:'form-control col'%>
+          <%= f.submit "Submit", class: 'btn btn-primary ml-2' %>
+        </div>
+      </div>
+    <% end %>
   <% end %>
+  <%= link_to 'Articles List', articles_path, class: 'badge badge-success'%>
 <% end %>
