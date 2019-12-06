@@ -13,7 +13,13 @@ class CommentsController < ApplicationController
   def edit; end
 
   def show
-    @comment = Comment.find_by_id(params[:id])
+    @comments = Article.find_by_id(params[:article_id]).comment
+    @comment = @comments.find_by_id(params[:id])
+    if !@comment.nil?
+      @comment
+    else
+      flash[:error] = 'This comment is unavailable for this article'
+    end
   end
 
   def create

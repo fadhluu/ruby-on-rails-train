@@ -19,9 +19,13 @@
             <%= link_to 'view', article_comment_path(@article.id, c.id) %>
           </li>
         <% end %>
-        <%= link_to 'Add New Comment', new_article_comment_path(@article.id), class: 'btn btn-warning'%>
       </ul>
     </div>
   </div>
   <%= link_to 'Articles List', articles_path, class: 'btn btn-primary'%>
+  <%= form_for [@article, @comment] do |f| %>
+    <%= f.label :Comment, "Comment" %>
+    <%= f.text_field :content, placeholder: 'Comment'%>
+    <%= f.submit "Submit", class: 'btn btn-primary' %>
+  <% end %>
 <% end %>

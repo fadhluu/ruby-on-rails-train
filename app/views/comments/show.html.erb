@@ -1,3 +1,7 @@
 <%= content_for :body do %>
-  <%= @comment.content %>
+  <% if !@comment.nil? %>
+    <%= @comment.content %>
+  <% else %>
+    <%= flash[:error] %>
+  <% end %>
 <% end %>
