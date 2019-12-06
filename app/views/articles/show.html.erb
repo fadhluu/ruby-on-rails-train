@@ -22,8 +22,8 @@
     <div class="col-12">
       <ul class="list-group">
         <% if !@article.nil? %>
-          <% if @article.comment.any? %>
-            <% @article.comment.each do |c| %>
+          <% if !@article.comments.nil? %>
+            <% @article.comments.each do |c| %>
               <li class="list-group-item">
                 <%= c.content %>
                 <%= link_to 'view', article_comment_path(@article.id, c.id), class:'badge badge-warning'%>

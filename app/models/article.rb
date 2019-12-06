@@ -7,5 +7,5 @@ class Article < ActiveRecord::Base
   scope :status_active, -> { where(status: 'active') }
 
   # relationship
-  has_many :comment, dependent: :destroy
+  has_many :comments, dependent: :destroy
 end

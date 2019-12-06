@@ -3,6 +3,11 @@
 class ArticlesController < ApplicationController
   def index
     @articles = Article.all
+    if @articles.any?
+      @articles
+    else
+      flash[:error] = 'No article found'
+    end
   end
 
   def new
