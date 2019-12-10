@@ -24,13 +24,13 @@ class CommentsController < ApplicationController
 
   def create
     @article = Article.find(params[:article_id])
-    @article.comment.create(params_comment)
+    @article.comments.create(params_comment)
     redirect_to article_path(@article.id)
   end
 
   private
 
   def params_comment
-    params.require(:comment).permit(:article_id, :content)
+    params.require(:comment).permit(:article_id, :content, :user_id)
   end
 end

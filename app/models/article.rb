@@ -4,8 +4,10 @@ class Article < ActiveRecord::Base
   validates :title, presence: true, length: { minimum: 5 }
   validates :content, presence: true, length: { minimum: 10 }
   validates :status, presence: true
+  validates :creator, presence: true
   scope :status_active, -> { where(status: 'active') }
 
   # relationship
-  has_many :comment, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  belongs_to :users, dependent: :delete
 end

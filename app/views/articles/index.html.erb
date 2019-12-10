@@ -5,20 +5,36 @@
   <div class="alert alert <%= key %>"><%=value%></div>
 <% end %>
 <%= content_for :body do %>
-  <% @articles.each do |article| %>
-    <div class="card my-3">
-      <div class="card-body">
-        <h5 class="card-title">
-          <%= article.title %>
-        </h5>
-        <p class="card-text">
-          <%= article.content.truncate(20) %>
-          <%= link_to 'read more', article_path(article.id) %>
-        </p>
-        <%= link_to 'edit', edit_article_path(article.id), class: "card-link"%>
-        <%= link_to 'delete', article_path(article.id), method: "DELETE",
-			data: {confirm: 'Delete  data ? '}, class: 'card-link'%>
+  <h4>
+    <% if !current_user  %>
+      <%= link_to 'Login', new_session_path %>
+    <% else %>
+      Welcome, <%= current_user.username %>
+    <% end %>
+  </h4>
+  <% if @articles.any? %>
+    <% @articles.each do |article| %>
+      <div class="card my-3">
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= article.title %>
+          </h5>
+          <p class="card-text">
+            <%= article.content.truncate(50) %>
+            <%= link_to 'read more', article_path(article.id), class:'badge badge-success'%>
+          </p>
+          <%= link_to 'edit', edit_article_path(article.id), class: "card-link badge badge-warning"%>
+          <%= link_to 'delete', article_path(article.id), method: "DELETE",
+			data: {confirm: 'Delete  data ? '}, class: 'card-link badge badge-danger'%>
+        </div>
       </div>
-    </div>
+    <% end %>
+  <% else %>
+    <h1 class='text-center display-3 card-title'><%= flash[:error] %></h1>
   <% end %>
+  <div class="row">
+    <div class="col-12">
+      <%= link_to 'Add New Article', new_article_path ,class:'btn btn-primary'%>
+    </div>
+  </div>
 <% end %>
