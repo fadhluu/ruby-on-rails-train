@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   def check_current_user
     if current_user.blank?
       flash[:error] = 'plase login first before run the action'
-      redirect_to new_session_url
+      redirect_to sessions_login_path
     else
       current_user
     end
