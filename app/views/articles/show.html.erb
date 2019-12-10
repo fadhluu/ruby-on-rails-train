@@ -6,16 +6,19 @@
   <% end %>
 <% end %>
 <%= content_for :body do %>
-  <div class="card">
+  <div class="card border-primary">
     <div class="card-body">
       <% if !@article.nil? %>
-        <h1 class='text-center display-3 card-title'><%= @article.title %></h2>
+        <h4 class='text-center display-4 card-title'><%= @article.title %></h4>
         <p class="card-text text-center">
           <%= @article.content %>
         </p>
       <% else %>
         <h1 class='text-center display-3 card-title'><%= flash[:error] %></h1>
       <% end %>
+    </div>
+    <div class="card-footer text-center bg-primary text-white">
+      Created by: <%= @article.user.username %>
     </div>
   </div>
   <div class="row my-4">
