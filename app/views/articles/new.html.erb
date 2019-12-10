@@ -23,6 +23,7 @@
         <%= f.radio_button :status, "off", class:'form-check-input'%>
         <%= label :article_status, 'off', class:'form-check-label' %>
       </div>
+      <%= f.hidden_field :creator, value: current_user.username %>
     </div>
     <%= f.submit :submit %>
   <% end %>
