@@ -27,6 +27,7 @@
               <li class="list-group-item">
                 <%= c.user.username %>
                 <%= c.content %>
+                <%= c.created_at.strftime("%T @ %F") %>
                 <%= link_to 'view', article_comment_path(@article.id, c.id), class:'badge badge-warning'%>
               </li>
             <% end %>
