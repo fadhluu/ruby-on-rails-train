@@ -69,3 +69,5 @@ gem 'jquery-rails'
 gem 'prettier'
 
 gem 'rubocop'
+
+gem 'bcrypt', require: 'bcrypt'
