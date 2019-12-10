@@ -25,7 +25,9 @@
           <% if !@article.comments.nil? %>
             <% @article.comments.each do |c| %>
               <li class="list-group-item">
+                <%= c.user.username %>
                 <%= c.content %>
+                <%= c.created_at.strftime("%T @ %F") %>
                 <%= link_to 'view', article_comment_path(@article.id, c.id), class:'badge badge-warning'%>
               </li>
             <% end %>
@@ -45,6 +47,7 @@
         <div class="form-inline">
           <%= f.text_field :content, placeholder: 'Your Comment Goes Here', class:'form-control col'%>
           <%= f.submit "Submit", class: 'btn btn-primary ml-2' %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
         </div>
       </div>
     <% end %>

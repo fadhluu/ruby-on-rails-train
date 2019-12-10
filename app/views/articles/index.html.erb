@@ -5,6 +5,13 @@
   <div class="alert alert <%= key %>"><%=value%></div>
 <% end %>
 <%= content_for :body do %>
+  <h4>
+    <% if !current_user  %>
+      <%= link_to 'Login', new_session_path %>
+    <% else %>
+      Welcome, <%= current_user.username %>
+    <% end %>
+  </h4>
   <% if @articles.any? %>
     <% @articles.each do |article| %>
       <div class="card my-3">

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ArticlesController < ApplicationController
+  before_action :check_current_user, only: %i[new create edit update destroy]
+
   def index
     @articles = Article.all
     if @articles.any?
@@ -65,6 +67,6 @@ class ArticlesController < ApplicationController
   private
 
   def params_article
-    params.require(:article).permit(:title, :content, :status)
+    params.require(:article).permit(:title, :content, :status, :creator)
   end
 end
