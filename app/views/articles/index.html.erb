@@ -7,7 +7,7 @@
 <%= content_for :body do %>
   <h4>
     <% if !current_user  %>
-      <%= link_to 'Login', new_session_path %>
+      <%= link_to 'Login', sessions_login_path %>
     <% else %>
       Welcome, <%= current_user.username %>
     <% end %>

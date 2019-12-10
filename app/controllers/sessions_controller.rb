@@ -20,4 +20,8 @@ class SessionsController < ApplicationController
       render 'new'
     end
   end
+
+  def destroy
+    session[:user] = nil
+  end
 end

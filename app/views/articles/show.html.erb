@@ -43,16 +43,18 @@
       </ul>
     </div>
   </div>
-  <% if !@article.nil? %>
-    <%= form_for [@article, @comment] do |f| %>
-      <div class="form-group">
-        <%= f.label :Comment, "New Comment" %>
-        <div class="form-inline">
-          <%= f.text_field :content, placeholder: 'Your Comment Goes Here', class:'form-control col'%>
-          <%= f.submit "Submit", class: 'btn btn-primary ml-2' %>
-          <%= f.hidden_field :user_id, value: current_user.id %>
+  <% if current_user %>
+    <% if !@article.nil? %>
+      <%= form_for [@article, @comment] do |f| %>
+        <div class="form-group">
+          <%= f.label :Comment, "New Comment" %>
+          <div class="form-inline">
+            <%= f.text_field :content, placeholder: 'Your Comment Goes Here', class:'form-control col'%>
+            <%= f.submit "Submit", class: 'btn btn-primary ml-2' %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
   <% end %>
   <%= link_to 'Articles List', articles_path, class: 'badge badge-success'%>
