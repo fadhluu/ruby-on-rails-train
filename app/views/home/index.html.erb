@@ -2,5 +2,11 @@
   Home Page
 <% end %>
 <%= content_for :body do %>
-  this is home page
+  <h4>
+    <% if !current_user  %>
+      Please login to <%= link_to 'Login Page', sessions_login_path %>
+    <% else %>
+      Welcome, <%= current_user.username %>
+    <% end %>
+  </h4>
 <% end %>
