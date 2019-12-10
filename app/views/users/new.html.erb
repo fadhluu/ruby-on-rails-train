@@ -13,8 +13,12 @@
       <%= f.password_field :password, class: "form-control", placeholder: "Password"%>
     </div>
     <div class="form-group">
+      <%= f.label :humanizer_answer, @user.humanizer_question %>
+      <%= f.text_field :humanizer_answer, class: "form-control" %>
+      <%= f.hidden_field :humanizer_question_id %>
+    </div>
+    <div class="form-group">
       <%= f.submit "Submit", class: "btn btn-primary"%>
     </div>
   <% end %>
-  
 <% end %>

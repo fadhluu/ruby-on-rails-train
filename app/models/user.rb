@@ -3,6 +3,9 @@
 require 'bcrypt'
 
 class User < ApplicationRecord
+  include Humanizer
+  require_human_on :create
+
   attr_accessor :password
   before_save :add_salt_and_hash
 

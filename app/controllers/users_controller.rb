@@ -11,17 +11,17 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params_user)
-  
+
     if @user.save
-      flash[:notice] = "Success create new user"
+      flash[:notice] = 'Success create new user'
       redirect_to root_path
     else
-      flash[:error] = "Data not valid"
-      render "new"
+      flash[:error] = 'Data not valid'
+      render 'new'
     end
   end
-  
+
   def params_user
-    params.require(:user).permit(:username, :email, :password)
+    params.require(:user).permit(:username, :email, :password, :humanizer_answer, :humanizer_question_id)
   end
 end
