@@ -73,3 +73,5 @@ gem 'rubocop'
 gem 'bcrypt', require: 'bcrypt'
 
 gem 'humanizer'
+
+gem 'kaminari'

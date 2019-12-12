@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   before_action :check_current_user, only: %i[new create edit update destroy]
 
   def index
-    @articles = Article.all
+    @articles = Article.page(params[:page]).per(1)
     if @articles.any?
       @articles
     else

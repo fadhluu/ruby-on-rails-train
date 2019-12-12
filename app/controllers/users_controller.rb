@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:notice] = 'Success create new user'
-      redirect_to root_path
+      redirect_to root_pathsyahfira
     else
       flash[:error] = 'Data not valid'
       render 'new'

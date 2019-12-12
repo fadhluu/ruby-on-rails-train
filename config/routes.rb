@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get '/sessions/login' => 'sessions#new'
+  get 'login' => 'sessions#new'
   post '/sessions' => 'sessions#create'
   delete '/sessions' => 'sessions#destroy', as: :destroy_session
 
